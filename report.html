@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>项目报告书 · 智能体驱动的芯片项目管理助手</title>
+<style>
+:root{--ink:#101828;--muted:#5b6b7f;--line:#e4e9f0;--brand:#1f4e79;--brand2:#2f7d95;--bg:#f7f9fc;--card:#fff;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 -apple-system,"Songti SC","Source Han Serif SC",serif;}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+header.hero{background:linear-gradient(135deg,#1f4e79,#2f7d95);color:#fff;padding:64px 0 56px;margin-bottom:40px}
+header.hero .wrap{max-width:860px}
+header.hero h1{margin:0 0 12px;font-size:34px;letter-spacing:.5px;font-family:-apple-system,"PingFang SC","Heiti SC",sans-serif}
+header.hero p{margin:6px 0;opacity:.92;font-size:15px}
+nav.sub{max-width:860px;margin:0 auto 28px;padding:0 24px;display:flex;gap:20px;flex-wrap:wrap;font-size:14px}
+nav.sub a{padding:6px 14px;background:#fff;border:1px solid var(--line);border-radius:999px;color:var(--brand)}
+main{max-width:860px;margin:0 auto;padding:0 24px 80px}
+h2{font-size:22px;margin:44px 0 14px;padding-left:12px;border-left:4px solid var(--brand);font-family:-apple-system,"PingFang SC","Heiti SC",sans-serif}
+h3{font-size:17px;margin:26px 0 8px;color:var(--brand)}
+p{margin:10px 0}
+ul{margin:10px 0 10px 22px;padding:0}
+li{margin:6px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:18px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:20px 0}
+.grid .card{margin:0}
+.kv{font-size:14px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;background:#fff}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+th{background:#eef3f8;font-weight:600}
+code{background:#eef3f8;padding:2px 6px;border-radius:4px;font-size:14px;font-family:ui-monospace,Menlo,monospace}
+pre{background:#12263f;color:#dbe7f3;padding:16px 18px;border-radius:10px;overflow:auto;font-size:13.5px;line-height:1.6}
+pre code{background:none;color:inherit;padding:0}
+.flow{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin:18px 0;text-align:center;font-size:14.5px;color:var(--brand);overflow-x:auto;white-space:nowrap}
+footer{border-top:1px solid var(--line);margin-top:60px;padding:24px 0 40px;color:var(--muted);font-size:13.5px;text-align:center}
+.badge{display:inline-block;background:#eef3f8;color:var(--brand);border-radius:6px;padding:3px 10px;font-size:13px;margin-right:6px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <h1>项目报告书</h1>
+  <p>智能体驱动的芯片项目管理助手</p>
+  <p>参赛方向：英伟达 Skill 黑客松　·　2026 年 9 月 29 日</p>
+</div></header>
+<nav class="sub">
+  <a href="./index.html">项目首页</a>
+  <a href="./report.html">项目报告书</a>
+  <a href="./journey.html">参赛历程记录</a>
+  <a href="./app/index.html">指挥舱演示</a>
+</nav>
+<main>
+  <h2>一、项目概述</h2>
+  <p>本项目面向芯片研发项目的风险管理与决策协同场景，构建了一套由智能体技能体系、可视化指挥舱与统一数据底座组成的项目管理助手。系统把分散在会议、邮件与台账中的风险信号汇聚为结构化风险条目，由智能体完成分级与影响分析，再由项目经理在可视化界面或协作卡片上作出判断，判断依据与结论统一沉淀回数据底座，形成可追溯、可复用的决策闭环。</p>
+
+  <h2>二、问题背景</h2>
+  <p>芯片研发项目具有周期长、环节多、跨团队协同密集的特点。一颗芯片从立项到量产需要经历设计、流片、封测、测试验证等多个阶段，任一环节的延误都可能沿链条向后传导。项目管理者面临三个突出问题：</p>
+  <ul>
+    <li><strong>风险信号分散。</strong>供应商交付、产能排队、测试资源冲突等信息散落在日常沟通中，缺乏统一汇集与分级机制，管理者难以形成全局判断。</li>
+    <li><strong>发现与处置之间存在断点。</strong>识别出的风险常常停留在讨论层面，缺少明确的判断记录与后续跟踪，同类问题反复出现。</li>
+    <li><strong>判断经验无法沉淀。</strong>项目经理的处置判断多依赖个人经验，未被结构化保存，难以在同项目或跨项目之间复用。</li>
+  </ul>
+
+  <h2>三、系统架构</h2>
+  <h3>3.1 数据底座</h3>
+  <p>风险表保存风险事实与最新审核状态，判断反馈表以只追加方式保存完整的判断历史。两张表构成系统的单一真相源，所有写入与读取都以此为准，避免多处状态不一致。</p>
+  <h3>3.2 智能体技能层</h3>
+  <p>由十八份技能文档构成，覆盖风险编排、判断反馈、信号扫描、影响分析、会议纪要、待办记录、周期巡检等能力。风险编排技能是分析中心，规则库、历史案例与影响分析作为被调用的能力，负责为主风险判断提供依据。</p>
+  <h3>3.3 可视化层</h3>
+  <p>指挥舱提供组合视图与项目详情两级界面。组合视图呈现项目状态、决策队列、团队负载与风险分布；项目详情呈现单个项目的节点进度、风险清单与判断入口。</p>
+
+  <h2>四、核心能力</h2>
+  <h3>4.1 风险感知与分级</h3>
+  <p>系统读取项目事件，命中确定性规则后生成风险条目，并给出风险等级、依据摘要、影响节点与建议动作。事件只记录客观事实，不夹带主观判断，保证分析过程可解释。</p>
+  <h3>4.2 判断闭环</h3>
+  <p>项目经理对每条风险可以作出确认、驳回、稍后处理、标记误报四种判断。四种判断都必须填写判断依据，依据长度不足五个字时系统拒绝提交。判断提交后，风险的最新状态与判断历史同时更新，只有确认动作会触发后续协同。</p>
+  <h3>4.3 双入口一致</h3>
+  <p>指挥舱与协作卡片是两个操作入口，但共用同一套校验、幂等与写回逻辑，任何一端作出的判断都会在另一端即时可见，避免出现两套台账、两套状态。</p>
+
+  <h2>五、技术实现</h2>
+  <h3>5.1 前端</h3>
+  <p>采用 React 19、Vite 7 与 TypeScript 5 构建，开启严格类型检查。页面采用哈希路由，构建产物为纯静态资源，可直接部署至静态托管平台，无需服务端渲染支持。</p>
+  <h3>5.2 后端</h3>
+  <p>后端基于 Node.js 内置的 HTTP 与 SQLite 模块实现，不依赖任何第三方运行时依赖，一条启动命令即可运行，降低了部署与演示成本。</p>
+  <h3>5.3 接口设计</h3>
+  <p>后端提供数据读取、判断写回、快照同步、健康检查等接口，其中判断写回接口是核心。接口返回结构与前端约定完全一致，字段含义、状态取值两端保持统一。</p>
+  <h3>5.4 可靠性机制</h3>
+  <ul>
+    <li><strong>幂等控制。</strong>判断提交携带幂等键，重复提交直接返回既有结果，不新增判断记录，也不重复触发协同。</li>
+    <li><strong>状态守卫。</strong>已确认、已驳回、已标记误报的风险不再接受新的判断，防止重复处理。</li>
+    <li><strong>快照重建。</strong>判断写回完成后立即重建指挥舱快照缓存，前端轮询即可读到最新状态。</li>
+    <li><strong>降级可用。</strong>后端不可达时前端自动回落到内置演示数据，静态部署仍可独立演示。</li>
+  </ul>
+
+  <h2>六、测试与验收</h2>
+  <p>项目提供端到端契约验证脚本，按前端实际的校验规则逐项断言后端响应，覆盖数据读取契约、判断写回、幂等命中、参数校验、协同触发与快照同步，共三十九项断言，当前全部通过。</p>
+
+  <h2>七、项目特点</h2>
+  <ul>
+    <li>把风险判断从口头讨论变为结构化记录，判断依据与结论全程留痕。</li>
+    <li>两个操作入口共用同一数据底座，消除了可视化界面与协作工具之间的状态断点。</li>
+    <li>后端零依赖实现，部署门槛低，便于在真实项目环境快速落地验证。</li>
+    <li>风险等级由确定性规则判定，智能体负责编排与解释，避免不可解释的自动决策。</li>
+  </ul>
+
+  <h2>八、后续规划</h2>
+  <ul>
+    <li>扩展事件接入范围，纳入更多项目过程数据，提升风险发现的覆盖面。</li>
+    <li>完善判断反馈的验证机制，使经过人工验证的判断可以进入案例库，辅助后续分析。</li>
+    <li>支持多项目并行管理，为项目组合层面的资源冲突提供预警。</li>
+  </ul>
+</main>
+
+<footer>智能体驱动的芯片项目管理助手 · 英伟达 Skill 黑客松参赛作品 · 2026</footer>
+</body>
+</html>
