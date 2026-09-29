@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>技能清单 · 智能体驱动的芯片项目管理助手</title>
+<style>
+:root{
+  --ink:#0f1b2d; --ink2:#243b53; --muted:#5b7085; --line:#e3e9f0;
+  --brand:#1f4e79; --brand-2:#2f7d95; --brand-3:#4a9db5;
+  --accent:#e8833a; --ok:#2f9e6f; --bad:#d94f4f;
+  --bg:#f6f8fb; --card:#ffffff; --radius:16px;
+  --shadow:0 1px 2px rgba(15,27,45,.04),0 8px 24px rgba(15,27,45,.06);
+  --shadow-lg:0 4px 12px rgba(15,27,45,.08),0 24px 60px rgba(15,27,45,.12);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.8 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.narrow{max-width:840px}
+
+/* ---------- 顶部导航 ---------- */
+.topbar{
+  position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);
+  backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);
+}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink);font-size:15px}
+.brand:hover{text-decoration:none}
+.logo{
+  width:30px;height:30px;border-radius:9px;flex:none;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  display:grid;place-items:center;color:#fff;font-size:14px;font-weight:700;letter-spacing:.5px;
+}
+.topnav{display:flex;gap:26px;font-size:14px;align-items:center}
+.topnav a{color:var(--ink2)}
+.topnav a.cta{
+  background:var(--brand);color:#fff;padding:7px 16px;border-radius:999px;font-weight:500;
+}
+.topnav a.cta:hover{background:#183f63;text-decoration:none}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:
+    radial-gradient(900px 380px at 12% -10%,rgba(74,157,181,.35),transparent 60%),
+    radial-gradient(700px 320px at 88% 0%,rgba(232,131,58,.18),transparent 62%),
+    linear-gradient(160deg,#0d2137 0%,#123a5c 55%,#15507a 100%);
+  color:#fff;padding:76px 0 0;overflow:hidden;
+}
+.hero .wrap{position:relative}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.3px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+  padding:6px 14px;border-radius:999px;color:#e8f2f8;margin-bottom:22px;
+}
+.pill i{width:7px;height:7px;border-radius:50%;background:#5fd39a;display:block;box-shadow:0 0 0 3px rgba(95,211,154,.25)}
+h1{
+  font-size:44px;line-height:1.25;margin:0 0 16px;letter-spacing:-.5px;font-weight:700;
+}
+.hero p.lede{font-size:18px;line-height:1.75;color:#c9dced;margin:0 0 30px;max-width:640px}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:46px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;
+  font-size:15px;font-weight:500;transition:transform .15s ease,box-shadow .15s ease;
+}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn.primary{background:#fff;color:#123a5c;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.btn.ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.btn.ghost:hover{background:rgba(255,255,255,.16)}
+
+/* 浏览器窗口截图 */
+.shot{
+  border-radius:14px 14px 0 0;overflow:hidden;background:#0b1a2b;
+  box-shadow:0 -2px 60px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.12);border-bottom:0;
+  margin-bottom:-2px;
+}
+.shot-bar{height:34px;background:#17324a;display:flex;align-items:center;gap:7px;padding:0 14px}
+.shot-bar span{width:10px;height:10px;border-radius:50%;background:#3c5a75;display:block}
+.shot-bar span:nth-child(1){background:#e0695f}
+.shot-bar span:nth-child(2){background:#e0b055}
+.shot-bar span:nth-child(3){background:#59b87a}
+.shot img{width:100%;display:block}
+
+/* ---------- 通用区块 ---------- */
+section{padding:76px 0}
+section.tight{padding:56px 0}
+.eyebrow{
+  font-size:13px;letter-spacing:2px;color:var(--brand-2);font-weight:600;
+  text-transform:uppercase;margin-bottom:12px;
+}
+h2{font-size:30px;line-height:1.4;margin:0 0 16px;letter-spacing:-.3px;font-weight:700}
+h3{font-size:19px;margin:0 0 10px;font-weight:600}
+.sec-lede{font-size:17px;color:var(--muted);max-width:680px;margin:0 0 40px;line-height:1.8}
+p{margin:0 0 14px}
+.muted{color:var(--muted)}
+
+/* 数字条 */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:-40px;position:relative;z-index:2}
+.stats div{background:#fff;padding:24px 22px;text-align:center}
+.stats b{display:block;font-size:30px;line-height:1.2;color:var(--brand);font-weight:700;letter-spacing:-.5px}
+.stats span{font-size:13.5px;color:var(--muted)}
+
+/* 卡片网格 */
+.grid{display:grid;gap:20px}
+.grid.c3{grid-template-columns:repeat(3,1fr)}
+.grid.c2{grid-template-columns:repeat(2,1fr)}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 24px;box-shadow:var(--shadow);
+}
+.card .num{
+  width:34px;height:34px;border-radius:10px;display:grid;place-items:center;margin-bottom:16px;
+  background:linear-gradient(135deg,rgba(47,125,149,.14),rgba(31,78,121,.14));
+  color:var(--brand);font-weight:700;font-size:15px;
+}
+.card p{margin:0;color:var(--muted);font-size:15px;line-height:1.75}
+
+/* 操作步骤 */
+.steps{counter-reset:s;display:grid;gap:18px}
+.step{
+  display:grid;grid-template-columns:52px 1fr;gap:20px;align-items:start;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow);
+}
+.step .idx{
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:17px;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;
+}
+.step h3{margin:6px 0 6px}
+.step p{margin:0;color:var(--muted);font-size:15px}
+.step code{background:#eef3f8;padding:2px 7px;border-radius:5px;font-size:13.5px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--brand)}
+.callout{
+  margin-top:24px;background:linear-gradient(135deg,rgba(47,125,149,.08),rgba(31,78,121,.06));
+  border:1px solid rgba(47,125,149,.22);border-radius:var(--radius);padding:20px 24px;font-size:15px;color:var(--ink2);
+}
+.callout b{color:var(--brand)}
+
+/* 架构 */
+.arch{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.arch-row{display:grid;grid-template-columns:170px 1fr;gap:0;border-bottom:1px solid var(--line)}
+.arch-row:last-child{border-bottom:0}
+.arch-row > div{padding:20px 24px}
+.arch-row .k{background:#f8fafc;font-weight:600;color:var(--ink2);font-size:15px;border-right:1px solid var(--line)}
+.arch-row .v{font-size:15px;color:var(--muted)}
+
+/* 文档页 */
+.doc h2{font-size:24px;margin:44px 0 14px;padding-left:14px;border-left:4px solid var(--brand)}
+.doc h3{font-size:17.5px;margin:28px 0 8px;color:var(--brand)}
+.doc ul{margin:12px 0 16px;padding-left:22px}
+.doc li{margin:7px 0;color:var(--ink2)}
+.doc p{color:var(--ink2)}
+.doc table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;background:#fff;
+  border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
+.doc th{background:#eef3f8;font-weight:600;color:var(--ink2)}
+
+footer{border-top:1px solid var(--line);padding:34px 0 46px;margin-top:20px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13.5px}
+
+@media(max-width:900px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .grid.c3,.grid.c2{grid-template-columns:1fr}
+  h1{font-size:32px}
+  h2{font-size:24px}
+  .arch-row{grid-template-columns:1fr}
+  .arch-row .k{border-right:0;border-bottom:1px solid var(--line)}
+  .topnav a:not(.cta){display:none}
+}
+
+/* 技能卡 */
+.skill{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+.skill .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.skill .code{font-size:12.5px;font-weight:700;color:#fff;background:var(--brand);border-radius:6px;padding:2px 8px;letter-spacing:.4px}
+.skill h3{margin:0;font-size:17px}
+.skill .en{font-size:12.5px;color:var(--muted);font-family:ui-monospace,Menlo,monospace}
+.skill p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.72}
+.skill .trig{font-size:13px;color:var(--brand-2);border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
+.group-title{display:flex;align-items:center;gap:12px;margin:44px 0 20px}
+.group-title h2{margin:0}
+.group-title .tag{font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 12px}
+
+/* 链路演示 */
+.trace{position:relative;margin:34px 0 0;padding-left:0}
+.tnode{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow);margin-bottom:18px}
+.tnode:last-child{margin-bottom:0}
+.tnode .row{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.tnode .n{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-weight:700;font-size:14px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;flex:none}
+.tnode h3{margin:0;font-size:17.5px}
+.tnode .who{font-size:13px;color:var(--brand-2);background:rgba(47,125,149,.1);border-radius:999px;padding:3px 11px}
+.tnode p{margin:8px 0 0;color:var(--muted);font-size:15px}
+.tnode ul{margin:10px 0 0;padding-left:20px}
+.tnode li{color:var(--ink2);font-size:14.8px;margin:5px 0}
+.tnode pre{margin:12px 0 0;background:#12263f;color:#dbe7f3;padding:14px 16px;border-radius:10px;overflow:auto;font-size:13px;line-height:1.65}
+.tnode pre code{background:none;color:inherit;padding:0}
+.tnode .out{background:#f4f8fb;border:1px solid rgba(47,125,149,.2);border-radius:10px;padding:12px 16px;margin-top:12px;font-size:14.5px;color:var(--ink2)}
+.tnode .out b{color:var(--brand)}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.facts div{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px}
+.facts span{display:block;color:var(--muted);font-size:12.5px;margin-bottom:2px}
+@media(max-width:900px){.facts{grid-template-columns:1fr}}
+</style>
+</head><body>
+
+
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="./index.html"><span class="logo">PM</span>智能体驱动的芯片项目管理助手</a>
+  <nav class="topnav">
+    <a href="./skills.html" style="color:var(--brand);font-weight:600">技能清单</a>
+    <a href="./demo.html">技能演示</a>
+    <a href="./report.html">项目报告书</a>
+    <a href="./journey.html">历程记录</a>
+    <a class="cta" href="./app/index.html">打开演示</a>
+  </nav>
+</div></div>
+<header class="hero" style="padding:64px 0 60px"><div class="wrap">
+  <div class="pill"><i></i>技能清单</div>
+  <h1 style="font-size:38px">十六项技能，一条风险主线</h1>
+  <p class="lede" style="margin-bottom:0">技能各司其职又能互相调用：信号扫描把消息变成事件，风险编排调用规则与案例形成风险，PM 判断回流数据底座，周期任务负责不让风险沉底。</p>
+</div></header>
+<section style="padding:0 0 76px"><div class="wrap">
+
+  <div class="group-title"><h2>风险主链</h2><span class="tag">信号进来，风险出去</span></div>
+  <div class="grid c2">
+    
+    <div class="skill">
+      <div class="head"><span class="code">05</span><h3>信号扫描</h3></div>
+      <div class="en">signal-scanning</div>
+      <p>持续监控项目群消息流，识别风险关键词与异常信号，标准化为候选事件后交给风险编排。</p>
+      <div class="trig">触发方式：自动触发 · 消息流</div>
+    </div>
+    <div class="skill">
+      <div class="head"><span class="code">01</span><h3>风险编排</h3></div>
+      <div class="en">risk-agent-orchestration</div>
+      <p>把标准化风险信号形成事件，调用规则库、历史案例与影响分析，生成或更新风险条目与风险卡片。</p>
+      <div class="trig">触发方式：自动触发 · 核心技能</div>
+    </div>
+    <div class="skill">
+      <div class="head"><span class="code">07</span><h3>影响分析</h3></div>
+      <div class="en">impact-analysis</div>
+      <p>根据事件、项目、节点与规则，分析直接影响、潜在传导节点和时间影响，输出可解释结论。</p>
+      <div class="trig">触发方式：被风险编排调用</div>
+    </div>
+  </div>
+  <div class="group-title"><h2>PM 决策闭环</h2><span class="tag">判断有依据，写回有出处</span></div>
+  <div class="grid c2">
+    
+    <div class="skill">
+      <div class="head"><span class="code">02</span><h3>判断反馈</h3></div>
+      <div class="en">pm-decision-feedback</div>
+      <p>统一处理两个入口提交的 PM 决策：附加判断历史、更新风险最新状态，并保证权限、幂等与学习边界。</p>
+      <div class="trig">触发方式：卡片回调 / 接口调用</div>
+    </div>
+    <div class="skill">
+      <div class="head"><span class="code">03</span><h3>联动合同</h3></div>
+      <div class="en">cockpit-agent-contract</div>
+      <p>规定指挥舱与风险卡片共享的数据真相、写回字段、刷新方式和验收标准，消除两端状态断点。</p>
+      <div class="trig">触发方式：契约 · 非运行时</div>
+    </div>
+    <div class="skill">
+      <div class="head"><span class="code">04</span><h3>判断后续</h3></div>
+      <div class="en">risk-decision-followup</div>
+      <p>处理已写入的风险判断：确认时幂等创建协同行动，其他判断更新卡片状态，并确保指挥舱读到同一结果。</p>
+      <div class="trig">触发方式：反馈新增触发</div>
+    </div>
+    <div class="skill">
+      <div class="head"><span class="code">10</span><h3>风险升级</h3></div>
+      <div class="en">risk-escalation</div>
+      <p>对满足升级条件的已确认或长期未处理风险生成升级建议与通知，保持权限、幂等与审计一致。</p>
+      <div class="trig">触发方式：条件触发</div>
+    </div>
+  </div>
+  <div class="group-title"><h2>会议与待办</h2><span class="tag">沟通即数据</span></div>
+  <div class="grid c2">
+    
+    <div class="skill">
+      <div class="head"><span class="code">06</span><h3>术语纠正</h3></div>
+      <div class="en">term-correction</div>
+      <p>用统一专业术语库纠正会议语音转写与纪要中的芯片专业词、缩写、料号与测试标准，提升纪要准确率。</p>
+      <div class="trig">触发方式：纪要生成前</div>
+    </div>
+    <div class="skill">
+      <div class="head"><span class="code">08</span><h3>会议编排</h3></div>
+      <div class="en">meeting-orchestration</div>
+      <p>项目经理发起时，围绕项目风险生成会议议程、讨论问题与会前材料，不替项目经理作出承诺。</p>
+      <div class="trig">触发方式：人工触发</div>
+    </div>
+    <div class="skill">
+      <div class="head"><span class="code">09</span><h3>会议纪要</h3></div>
+      <div class="en">meeting-minutes</div>
+      <p>会后自动读取会议纪要，纠正术语后生成结构化纪要，提取决策、行动项与风险信号写入数据底座。</p>
+      <div class="trig">触发方式：会后自动触发</div>
+    </div>
+    <div class="skill">
+      <div class="head"><span class="code">15</span><h3>待办记录</h3></div>
+      <div class="en">todo-recorder</div>
+      <p>识别群聊中的待办事项，去重后写入行动项表，并支持后续状态追踪。</p>
+      <div class="trig">触发方式：人工触发</div>
+    </div>
+    <div class="skill">
+      <div class="head"><span class="code">16</span><h3>决策模拟</h3></div>
+      <div class="en">decision-simulation</div>
+      <p>描述遇到的问题时，检索案例库中的相似历史案例，给出解决办法并标明引用来源与数据。</p>
+      <div class="trig">触发方式：人工触发</div>
+    </div>
+  </div>
+  <div class="group-title"><h2>查询与周期任务</h2><span class="tag">不用问，自己跑</span></div>
+  <div class="grid c2">
+    
+    <div class="skill">
+      <div class="head"><span class="code">11</span><h3>健康度问答</h3></div>
+      <div class="en">health-dashboard</div>
+      <p>回答项目组合或单项目的风险健康度问题，并引导打开可视化指挥舱查看最新数据。</p>
+      <div class="trig">触发方式：问答触发</div>
+    </div>
+    <div class="skill">
+      <div class="head"><span class="code">12</span><h3>每日巡检</h3></div>
+      <div class="en">daily-inspection</div>
+      <p>每日定时巡检里程碑、开放风险与逾期行动项，仅在异常时发送结构化提醒，正常时静默。</p>
+      <div class="trig">触发方式：定时 · 每日</div>
+    </div>
+    <div class="skill">
+      <div class="head"><span class="code">13</span><h3>周度复盘</h3></div>
+      <div class="en">weekly-risk-review</div>
+      <p>汇总一周风险变化、PM 决策、里程碑影响与行动项进展，生成面向 PM 的周度风险复盘。</p>
+      <div class="trig">触发方式：定时 · 每周</div>
+    </div>
+    <div class="skill">
+      <div class="head"><span class="code">14</span><h3>客户周报</h3></div>
+      <div class="en">client-weekly-report</div>
+      <p>每周生成客户周报草稿，对内部风险信息做权限与表述控制，完成后推送 PM 审核。</p>
+      <div class="trig">触发方式：定时 · 每周</div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:40px">
+    <b>设计边界：</b>风险等级由确定性规则判定，智能体只负责编排与解释；任何判断都不能自动修改规则；未经人工验证的反馈不进入正式检索。
+    十六项技能之外，另有一份员工档案定义智能体的角色与强制行为，以及一份配置清单记录挂载顺序与验收口径。
+  </div>
+  <div class="callout" style="margin-top:16px">
+    想看技能跑起来的样子？<a href="./demo.html">技能演示</a>用一条真实风险走完从信号到协同的完整链路。
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>智能体驱动的芯片项目管理助手 · 英伟达 Skill 黑客松参赛作品</span>
+  <span>2026 年 9 月</span>
+</div></footer>
+</body></html>

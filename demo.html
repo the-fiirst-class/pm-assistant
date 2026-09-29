@@ -2,7 +2,7 @@
 <html lang="zh-CN"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>参赛历程记录 · 智能体驱动的芯片项目管理助手</title>
+<title>技能演示 · 智能体驱动的芯片项目管理助手</title>
 <style>
 :root{
   --ink:#0f1b2d; --ink2:#243b53; --muted:#5b7085; --line:#e3e9f0;
@@ -173,6 +173,38 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   .arch-row .k{border-right:0;border-bottom:1px solid var(--line)}
   .topnav a:not(.cta){display:none}
 }
+
+/* 技能卡 */
+.skill{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+.skill .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.skill .code{font-size:12.5px;font-weight:700;color:#fff;background:var(--brand);border-radius:6px;padding:2px 8px;letter-spacing:.4px}
+.skill h3{margin:0;font-size:17px}
+.skill .en{font-size:12.5px;color:var(--muted);font-family:ui-monospace,Menlo,monospace}
+.skill p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.72}
+.skill .trig{font-size:13px;color:var(--brand-2);border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
+.group-title{display:flex;align-items:center;gap:12px;margin:44px 0 20px}
+.group-title h2{margin:0}
+.group-title .tag{font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 12px}
+
+/* 链路演示 */
+.trace{position:relative;margin:34px 0 0;padding-left:0}
+.tnode{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow);margin-bottom:18px}
+.tnode:last-child{margin-bottom:0}
+.tnode .row{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.tnode .n{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-weight:700;font-size:14px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;flex:none}
+.tnode h3{margin:0;font-size:17.5px}
+.tnode .who{font-size:13px;color:var(--brand-2);background:rgba(47,125,149,.1);border-radius:999px;padding:3px 11px}
+.tnode p{margin:8px 0 0;color:var(--muted);font-size:15px}
+.tnode ul{margin:10px 0 0;padding-left:20px}
+.tnode li{color:var(--ink2);font-size:14.8px;margin:5px 0}
+.tnode pre{margin:12px 0 0;background:#12263f;color:#dbe7f3;padding:14px 16px;border-radius:10px;overflow:auto;font-size:13px;line-height:1.65}
+.tnode pre code{background:none;color:inherit;padding:0}
+.tnode .out{background:#f4f8fb;border:1px solid rgba(47,125,149,.2);border-radius:10px;padding:12px 16px;margin-top:12px;font-size:14.5px;color:var(--ink2)}
+.tnode .out b{color:var(--brand)}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.facts div{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px}
+.facts span{display:block;color:var(--muted);font-size:12.5px;margin-bottom:2px}
+@media(max-width:900px){.facts{grid-template-columns:1fr}}
 </style>
 </head><body>
 
@@ -181,60 +213,109 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <a class="brand" href="./index.html"><span class="logo">PM</span>智能体驱动的芯片项目管理助手</a>
   <nav class="topnav">
     <a href="./skills.html">技能清单</a>
-    <a href="./demo.html">技能演示</a>
+    <a href="./demo.html" style="color:var(--brand);font-weight:600">技能演示</a>
     <a href="./report.html">项目报告书</a>
-    <a href="./journey.html" style="color:var(--brand);font-weight:600">历程记录</a>
+    <a href="./journey.html">历程记录</a>
     <a class="cta" href="./app/index.html">打开演示</a>
   </nav>
 </div></div>
-<header class="hero" style="padding:60px 0 56px"><div class="wrap">
-  <div class="pill"><i></i>英伟达 Skill 黑客松参赛作品</div>
-  <h1 style="font-size:36px">团队参赛历程记录</h1>
-  <p class="lede" style="margin-bottom:0">智能体驱动的芯片项目管理助手　·　五天推进过程</p>
+<header class="hero" style="padding:64px 0 60px"><div class="wrap">
+  <div class="pill"><i></i>技能演示</div>
+  <h1 style="font-size:38px">一条风险，八个环节</h1>
+  <p class="lede" style="margin-bottom:0">以 NV685 芯片项目的 BGA 基板延期为例，展示技能如何把一条消息变成有依据的风险判断，并在判断之后回到数据底座。</p>
 </div></header>
-<section style="padding-top:44px">
-<div class="wrap narrow doc">
-  <h2>一、团队构成</h2>
-  <table>
-    <tr><th>成员</th><th>主要分工</th></tr>
-    <tr><td>ECNU-No1-Alpha</td><td>智能体技能设计、后端与数据底座、接口契约与验收测试</td></tr>
-    <tr><td>lambert23333</td><td>指挥舱前端、可视化设计与交互实现、部署配置</td></tr>
-  </table>
+<section style="padding:0 0 76px"><div class="wrap">
+  <div class="callout" style="margin-top:0">
+    演示数据来自项目内置示例，可在 <a href="./app/index.html">指挥舱演示</a> 里实际操作第 6 至第 8 步。
+  </div>
 
-  <h2>二、五天历程</h2>
+  <div class="trace">
+    <div class="tnode">
+      <div class="row"><span class="n">1</span><h3>信号进入</h3><span class="who">05 信号扫描</span></div>
+      <p>项目群出现一条供应商交付延期的消息。信号扫描技能识别出其中的风险关键词与时间量级，把它标准化为候选事件交给风险编排。</p>
+      <div class="facts">
+        <div><span>来源</span>项目群消息</div>
+        <div><span>识别结果</span>交付延期 · 时间敏感</div>
+      </div>
+    </div>
 
-  <h3>第一天　确定场景与技术路线</h3>
-  <p>团队用一天时间收敛选题。我们比较了若干个方向后，最终锁定芯片研发项目的风险管理场景。理由是这一场景的问题足够具体：风险信号分散、发现与处置之间存在断点、判断经验无法沉淀。同时它又有清晰的量化边界，风险等级可以由确定性规则判定，便于在有限时间内做出可验证的成果。</p>
-  <p>这一天确定了三层架构的基本形态，即数据底座、智能体技能层与可视化层，并约定两端只认同一份数据，不各自维护台账。</p>
+    <div class="tnode">
+      <div class="row"><span class="n">2</span><h3>形成客观事件</h3><span class="who">01 风险编排</span></div>
+      <p>风险编排技能把候选信号落为事件记录。事件只记录客观事实，不夹带任何主观判断，保证后续每一步都可回溯。</p>
+      <pre><code>EV001  BGA 基板供应商交付计划延期 15 天
+时间    2026-08-08 21:34
+关联项目 NV685 芯片项目</code></pre>
+    </div>
 
-  <h3>第二天　搭建指挥舱前端</h3>
-  <p>第二天集中完成可视化层。组合视图先成形，呈现项目状态、决策队列、团队负载与风险分布四块内容；随后完成项目详情页，把节点进度、风险清单与判断入口组织在同一屏内。</p>
-  <p>这一天的关键决定是指挥舱做成纯静态前端，页面使用哈希路由，构建产物可以直接部署，不需要额外的服务端渲染支持。</p>
+    <div class="tnode">
+      <div class="row"><span class="n">3</span><h3>命中确定性规则</h3><span class="who">01 风险编排 → 规则库</span></div>
+      <p>编排技能调用规则库逐条比对。规则判定风险等级，不由模型拍脑袋决定。</p>
+      <pre><code>规则 R001   delay_days &gt;= 14
+命中值      15 天
+结论        High</code></pre>
+    </div>
 
-  <h3>第三天　构建智能体技能体系</h3>
-  <p>第三天梳理并落地智能体技能体系，形成十八份技能文档。我们把风险编排确立为唯一的分析中心，规则库、历史案例与影响分析退为被调用的能力，避免多个分析主体各说各话。</p>
-  <p>同一天起草了指挥舱与智能体之间的联动合同，把共享的数据真相、写回字段、刷新方式与验收标准逐条写死。这份合同在后续两天里成为两端对齐的依据，省去了大量反复沟通。</p>
+    <div class="tnode">
+      <div class="row"><span class="n">4</span><h3>检索历史案例</h3><span class="who">01 风险编排 → 案例库</span></div>
+      <p>同时检索案例库中的相似历史处置，为建议动作提供参照。引用来源随结论一并输出，便于复核。</p>
+      <div class="out"><b>命中案例</b>　CASE001 · BGA 基板延期导致封测节点延后</div>
+    </div>
 
-  <h3>第四天　实现后端与数据底座</h3>
-  <p>第四天完成后端。风险表保存风险事实与最新审核状态，判断反馈表以只追加方式记录判断历史，两张表构成单一真相源。围绕它实现了数据读取、判断写回、快照同步与健康检查接口。</p>
-  <p>这一天投入最多的是可靠性设计。判断依据的长度校验、重复提交的幂等控制、已处理风险的状态守卫，都是在这一天反复推敲后定下的规则。后端最终做到零第三方依赖，一条命令即可启动。</p>
+    <div class="tnode">
+      <div class="row"><span class="n">5</span><h3>分析影响面</h3><span class="who">07 影响分析</span></div>
+      <p>影响分析技能沿项目节点向后推演，区分直接影响与潜在传导，避免只看到眼前这一个节点。</p>
+      <div class="out">
+        <b>直接影响</b>　M004 封测完成<br>
+        <b>潜在传导</b>　M005 客户验证
+      </div>
+    </div>
 
-  <h3>第五天　两端打通与验收</h3>
-  <p>第五天完成两端联调与验收。前端数据适配层从演示数据切换到真实接口，同时保留了后端不可达时的降级路径，保证静态部署仍可独立演示。</p>
-  <p>我们编写了端到端契约验证脚本，按照前端实际的校验规则逐项断言后端响应，覆盖数据读取契约、判断写回、幂等命中、参数校验、协同触发与快照同步，共三十九项断言。脚本第一次运行时暴露了两个真实问题，一是判断选项的编号口径两端不一致，二是幂等检查被放在了状态守卫之后，导致重复点击返回错误而不是幂等结果。两处修正后，断言全部通过。</p>
-  <p>同日整理了仓库结构，把智能体技能、指挥舱与后端并入同一工程，并补齐运行说明与验收清单。</p>
+    <div class="tnode">
+      <div class="row"><span class="n">6</span><h3>生成风险与判断卡</h3><span class="who">01 风险编排</span></div>
+      <p>汇总以上结果形成风险条目与判断卡。卡片首屏给出摘要、等级、影响节点与依据，详细内容放入折叠区；判断依据输入框与四个动作按钮都是真实控件。</p>
+      <div class="facts">
+        <div><span>风险编号</span>RISK001</div>
+        <div><span>等级</span>High</div>
+        <div><span>建议动作</span>3 条，含责任角色与时限</div>
+        <div><span>状态</span>待 PM 确认</div>
+      </div>
+    </div>
 
-  <h2>三、协作方式</h2>
-  <p>两人采用接口先行的工作方式。先把数据形状与接口契约固定下来，前端与后端各自推进，互不阻塞。联动合同在这里起到关键作用，它把两端必须一致的字段、状态取值与刷新时机写成明文，出现分歧时以合同为准，而不必来回确认。</p>
-  <p>每天收尾时同步当日进展与遗留问题，第二天的任务在开始前就已明确。</p>
+    <div class="tnode">
+      <div class="row"><span class="n">7</span><h3>PM 作出判断</h3><span class="who">02 判断反馈</span></div>
+      <p>项目经理在指挥舱或卡片上填写判断依据并选择方案。四种动作都必须填依据，不足五个字直接拒绝；重复提交由幂等键兜住，不会产生第二条记录。</p>
+      <pre><code>POST /api/risk-decision
+{
+  "riskId": "RISK001",
+  "decision": "confirm",
+  "decisionReason": "供应商已确认新交付窗口，按方案一推进",
+  "selectedOptionId": "REC-1",
+  "idempotencyKey": "RISK001-confirm"
+}
 
-  <h2>四、收获与体会</h2>
-  <ul>
-    <li>把问题定义清楚，比急着写代码更重要。第一天在选题上的收敛，直接决定了后面四天的节奏。</li>
-    <li>接口契约是双人协作的效率来源。口径写清楚了，两端可以并行推进，验收时也更容易定位问题。</li>
-    <li>可靠性设计值得投入。幂等、校验与状态守卫这些看似细节的规则，正是把演示品变成可用工具的关键。</li>
-    <li>自动化验证省去了人工点击。三十九项断言在每次改动后几十秒内跑完，比人工回归可靠得多。</li>
-  </ul>
+→ reviewStatus: confirmed　idempotent: false</code></pre>
+    </div>
+
+    <div class="tnode">
+      <div class="row"><span class="n">8</span><h3>写回与协同</h3><span class="who">04 判断后续</span></div>
+      <p>判断同时写入两处：风险表更新最新状态，判断反馈表追加一条历史。只有「确认」会创建协同行动，其余三种动作只留痕、不打扰他人。写回完成后指挥舱快照立即重建，页面轮询即可读到新状态。</p>
+      <div class="facts">
+        <div><span>风险表</span>RISK001 → confirmed</div>
+        <div><span>判断历史</span>新增 1 条，状态 pending 待验证</div>
+        <div><span>协同行动</span>COLLAB-FB…（仅确认动作）</div>
+        <div><span>指挥舱</span>待确认风险 2 → 1</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:32px">
+    <b>为什么这样设计：</b>把不确定的判断留给项目经理，把确定的部分交给规则与技能，并且让每一次判断都有出处。链路中的每一步都可单独复核，出问题时能定位到具体环节，而不是面对一个黑箱结论。
+  </div>
+
+  <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap">
+    <a class="btn primary" style="background:var(--brand);color:#fff;box-shadow:none" href="./app/index.html">亲手操作第 6 至第 8 步 →</a>
+    <a class="btn ghost" style="background:#fff;color:var(--brand);border:1px solid var(--line)" href="./skills.html">查看完整技能清单</a>
+  </div>
 </div></section>
 
 <footer><div class="wrap">
