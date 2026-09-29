@@ -1,57 +1,197 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
+<html lang="zh-CN"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>项目报告书 · 智能体驱动的芯片项目管理助手</title>
 <style>
-:root{--ink:#101828;--muted:#5b6b7f;--line:#e4e9f0;--brand:#1f4e79;--brand2:#2f7d95;--bg:#f7f9fc;--card:#fff;}
+:root{
+  --ink:#0f1b2d; --ink2:#243b53; --muted:#5b7085; --line:#e3e9f0;
+  --brand:#1f4e79; --brand-2:#2f7d95; --brand-3:#4a9db5;
+  --accent:#e8833a; --ok:#2f9e6f; --bad:#d94f4f;
+  --bg:#f6f8fb; --card:#ffffff; --radius:16px;
+  --shadow:0 1px 2px rgba(15,27,45,.04),0 8px 24px rgba(15,27,45,.06);
+  --shadow-lg:0 4px 12px rgba(15,27,45,.08),0 24px 60px rgba(15,27,45,.12);
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 -apple-system,"Songti SC","Source Han Serif SC",serif;}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.8 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
 a{color:var(--brand);text-decoration:none}
 a:hover{text-decoration:underline}
-.wrap{max-width:860px;margin:0 auto;padding:0 24px}
-header.hero{background:linear-gradient(135deg,#1f4e79,#2f7d95);color:#fff;padding:64px 0 56px;margin-bottom:40px}
-header.hero .wrap{max-width:860px}
-header.hero h1{margin:0 0 12px;font-size:34px;letter-spacing:.5px;font-family:-apple-system,"PingFang SC","Heiti SC",sans-serif}
-header.hero p{margin:6px 0;opacity:.92;font-size:15px}
-nav.sub{max-width:860px;margin:0 auto 28px;padding:0 24px;display:flex;gap:20px;flex-wrap:wrap;font-size:14px}
-nav.sub a{padding:6px 14px;background:#fff;border:1px solid var(--line);border-radius:999px;color:var(--brand)}
-main{max-width:860px;margin:0 auto;padding:0 24px 80px}
-h2{font-size:22px;margin:44px 0 14px;padding-left:12px;border-left:4px solid var(--brand);font-family:-apple-system,"PingFang SC","Heiti SC",sans-serif}
-h3{font-size:17px;margin:26px 0 8px;color:var(--brand)}
-p{margin:10px 0}
-ul{margin:10px 0 10px 22px;padding:0}
-li{margin:6px 0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:18px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:20px 0}
-.grid .card{margin:0}
-.kv{font-size:14px;color:var(--muted)}
-table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;background:#fff}
-th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
-th{background:#eef3f8;font-weight:600}
-code{background:#eef3f8;padding:2px 6px;border-radius:4px;font-size:14px;font-family:ui-monospace,Menlo,monospace}
-pre{background:#12263f;color:#dbe7f3;padding:16px 18px;border-radius:10px;overflow:auto;font-size:13.5px;line-height:1.6}
-pre code{background:none;color:inherit;padding:0}
-.flow{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin:18px 0;text-align:center;font-size:14.5px;color:var(--brand);overflow-x:auto;white-space:nowrap}
-footer{border-top:1px solid var(--line);margin-top:60px;padding:24px 0 40px;color:var(--muted);font-size:13.5px;text-align:center}
-.badge{display:inline-block;background:#eef3f8;color:var(--brand);border-radius:6px;padding:3px 10px;font-size:13px;margin-right:6px}
-</style>
-</head>
-<body>
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.narrow{max-width:840px}
 
-<header class="hero"><div class="wrap">
-  <h1>项目报告书</h1>
-  <p>智能体驱动的芯片项目管理助手</p>
-  <p>参赛方向：英伟达 Skill 黑客松　·　2026 年 9 月 29 日</p>
+/* ---------- 顶部导航 ---------- */
+.topbar{
+  position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);
+  backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);
+}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink);font-size:15px}
+.brand:hover{text-decoration:none}
+.logo{
+  width:30px;height:30px;border-radius:9px;flex:none;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  display:grid;place-items:center;color:#fff;font-size:14px;font-weight:700;letter-spacing:.5px;
+}
+.topnav{display:flex;gap:26px;font-size:14px;align-items:center}
+.topnav a{color:var(--ink2)}
+.topnav a.cta{
+  background:var(--brand);color:#fff;padding:7px 16px;border-radius:999px;font-weight:500;
+}
+.topnav a.cta:hover{background:#183f63;text-decoration:none}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:
+    radial-gradient(900px 380px at 12% -10%,rgba(74,157,181,.35),transparent 60%),
+    radial-gradient(700px 320px at 88% 0%,rgba(232,131,58,.18),transparent 62%),
+    linear-gradient(160deg,#0d2137 0%,#123a5c 55%,#15507a 100%);
+  color:#fff;padding:76px 0 0;overflow:hidden;
+}
+.hero .wrap{position:relative}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.3px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+  padding:6px 14px;border-radius:999px;color:#e8f2f8;margin-bottom:22px;
+}
+.pill i{width:7px;height:7px;border-radius:50%;background:#5fd39a;display:block;box-shadow:0 0 0 3px rgba(95,211,154,.25)}
+h1{
+  font-size:44px;line-height:1.25;margin:0 0 16px;letter-spacing:-.5px;font-weight:700;
+}
+.hero p.lede{font-size:18px;line-height:1.75;color:#c9dced;margin:0 0 30px;max-width:640px}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:46px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;
+  font-size:15px;font-weight:500;transition:transform .15s ease,box-shadow .15s ease;
+}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn.primary{background:#fff;color:#123a5c;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.btn.ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.btn.ghost:hover{background:rgba(255,255,255,.16)}
+
+/* 浏览器窗口截图 */
+.shot{
+  border-radius:14px 14px 0 0;overflow:hidden;background:#0b1a2b;
+  box-shadow:0 -2px 60px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.12);border-bottom:0;
+  margin-bottom:-2px;
+}
+.shot-bar{height:34px;background:#17324a;display:flex;align-items:center;gap:7px;padding:0 14px}
+.shot-bar span{width:10px;height:10px;border-radius:50%;background:#3c5a75;display:block}
+.shot-bar span:nth-child(1){background:#e0695f}
+.shot-bar span:nth-child(2){background:#e0b055}
+.shot-bar span:nth-child(3){background:#59b87a}
+.shot img{width:100%;display:block}
+
+/* ---------- 通用区块 ---------- */
+section{padding:76px 0}
+section.tight{padding:56px 0}
+.eyebrow{
+  font-size:13px;letter-spacing:2px;color:var(--brand-2);font-weight:600;
+  text-transform:uppercase;margin-bottom:12px;
+}
+h2{font-size:30px;line-height:1.4;margin:0 0 16px;letter-spacing:-.3px;font-weight:700}
+h3{font-size:19px;margin:0 0 10px;font-weight:600}
+.sec-lede{font-size:17px;color:var(--muted);max-width:680px;margin:0 0 40px;line-height:1.8}
+p{margin:0 0 14px}
+.muted{color:var(--muted)}
+
+/* 数字条 */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:-40px;position:relative;z-index:2}
+.stats div{background:#fff;padding:24px 22px;text-align:center}
+.stats b{display:block;font-size:30px;line-height:1.2;color:var(--brand);font-weight:700;letter-spacing:-.5px}
+.stats span{font-size:13.5px;color:var(--muted)}
+
+/* 卡片网格 */
+.grid{display:grid;gap:20px}
+.grid.c3{grid-template-columns:repeat(3,1fr)}
+.grid.c2{grid-template-columns:repeat(2,1fr)}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 24px;box-shadow:var(--shadow);
+}
+.card .num{
+  width:34px;height:34px;border-radius:10px;display:grid;place-items:center;margin-bottom:16px;
+  background:linear-gradient(135deg,rgba(47,125,149,.14),rgba(31,78,121,.14));
+  color:var(--brand);font-weight:700;font-size:15px;
+}
+.card p{margin:0;color:var(--muted);font-size:15px;line-height:1.75}
+
+/* 操作步骤 */
+.steps{counter-reset:s;display:grid;gap:18px}
+.step{
+  display:grid;grid-template-columns:52px 1fr;gap:20px;align-items:start;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow);
+}
+.step .idx{
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:17px;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;
+}
+.step h3{margin:6px 0 6px}
+.step p{margin:0;color:var(--muted);font-size:15px}
+.step code{background:#eef3f8;padding:2px 7px;border-radius:5px;font-size:13.5px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--brand)}
+.callout{
+  margin-top:24px;background:linear-gradient(135deg,rgba(47,125,149,.08),rgba(31,78,121,.06));
+  border:1px solid rgba(47,125,149,.22);border-radius:var(--radius);padding:20px 24px;font-size:15px;color:var(--ink2);
+}
+.callout b{color:var(--brand)}
+
+/* 架构 */
+.arch{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.arch-row{display:grid;grid-template-columns:170px 1fr;gap:0;border-bottom:1px solid var(--line)}
+.arch-row:last-child{border-bottom:0}
+.arch-row > div{padding:20px 24px}
+.arch-row .k{background:#f8fafc;font-weight:600;color:var(--ink2);font-size:15px;border-right:1px solid var(--line)}
+.arch-row .v{font-size:15px;color:var(--muted)}
+
+/* 文档页 */
+.doc h2{font-size:24px;margin:44px 0 14px;padding-left:14px;border-left:4px solid var(--brand)}
+.doc h3{font-size:17.5px;margin:28px 0 8px;color:var(--brand)}
+.doc ul{margin:12px 0 16px;padding-left:22px}
+.doc li{margin:7px 0;color:var(--ink2)}
+.doc p{color:var(--ink2)}
+.doc table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;background:#fff;
+  border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.doc th,.doc td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
+.doc th{background:#eef3f8;font-weight:600;color:var(--ink2)}
+
+footer{border-top:1px solid var(--line);padding:34px 0 46px;margin-top:20px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13.5px}
+
+@media(max-width:900px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .grid.c3,.grid.c2{grid-template-columns:1fr}
+  h1{font-size:32px}
+  h2{font-size:24px}
+  .arch-row{grid-template-columns:1fr}
+  .arch-row .k{border-right:0;border-bottom:1px solid var(--line)}
+  .topnav a:not(.cta){display:none}
+}
+</style>
+</head><body>
+
+
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="./index.html"><span class="logo">PM</span>智能体驱动的芯片项目管理助手</a>
+  <nav class="topnav">
+    <a href="./report.html">项目报告书</a>
+    <a href="./journey.html">参赛历程记录</a>
+    <a class="cta" href="./app/index.html">打开演示</a>
+  </nav>
+</div></div>
+<header class="hero" style="padding:60px 0 56px"><div class="wrap">
+  <div class="pill"><i></i>英伟达 Skill 黑客松参赛作品</div>
+  <h1 style="font-size:36px">项目报告书</h1>
+  <p class="lede" style="margin-bottom:0">智能体驱动的芯片项目管理助手　·　2026 年 9 月 29 日</p>
 </div></header>
-<nav class="sub">
-  <a href="./index.html">项目首页</a>
-  <a href="./report.html">项目报告书</a>
-  <a href="./journey.html">参赛历程记录</a>
-  <a href="./app/index.html">指挥舱演示</a>
-</nav>
-<main>
+<section style="padding-top:44px">
+<div class="wrap narrow doc">
   <h2>一、项目概述</h2>
   <p>本项目面向芯片研发项目的风险管理与决策协同场景，构建了一套由智能体技能体系、可视化指挥舱与统一数据底座组成的项目管理助手。系统把分散在会议、邮件与台账中的风险信号汇聚为结构化风险条目，由智能体完成分级与影响分析，再由项目经理在可视化界面或协作卡片上作出判断，判断依据与结论统一沉淀回数据底座，形成可追溯、可复用的决策闭环。</p>
 
@@ -111,8 +251,10 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding:24px 0 40px;colo
     <li>完善判断反馈的验证机制，使经过人工验证的判断可以进入案例库，辅助后续分析。</li>
     <li>支持多项目并行管理，为项目组合层面的资源冲突提供预警。</li>
   </ul>
-</main>
+</div></section>
 
-<footer>智能体驱动的芯片项目管理助手 · 英伟达 Skill 黑客松参赛作品 · 2026</footer>
-</body>
-</html>
+<footer><div class="wrap">
+  <span>智能体驱动的芯片项目管理助手 · 英伟达 Skill 黑客松参赛作品</span>
+  <span>2026 年 9 月</span>
+</div></footer>
+</body></html>
