@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>演示录屏 · 智能体驱动的芯片项目管理助手</title>
+<style>
+:root{
+  --ink:#0f1b2d; --ink2:#243b53; --muted:#5b7085; --line:#e3e9f0;
+  --brand:#1f4e79; --brand-2:#2f7d95;
+  --bg:#f6f8fb; --card:#ffffff; --radius:16px;
+  --shadow:0 1px 2px rgba(15,27,45,.04),0 8px 24px rgba(15,27,45,.06);
+  --shadow-lg:0 4px 12px rgba(15,27,45,.08),0 24px 60px rgba(15,27,45,.12);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.8 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);
+  backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink);font-size:15px}
+.brand:hover{text-decoration:none}
+.logo{width:30px;height:30px;border-radius:9px;flex:none;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  display:grid;place-items:center;color:#fff;font-size:14px;font-weight:700;letter-spacing:.5px}
+.topnav{display:flex;gap:26px;font-size:14px;align-items:center}
+.topnav a{color:var(--ink2)}
+.topnav a.cta{background:var(--brand);color:#fff;padding:7px 16px;border-radius:999px;font-weight:500}
+.topnav a.cta:hover{background:#183f63;text-decoration:none}
+.hero{background:
+    radial-gradient(900px 380px at 12% -10%,rgba(74,157,181,.35),transparent 60%),
+    radial-gradient(700px 320px at 88% 0%,rgba(232,131,58,.18),transparent 62%),
+    linear-gradient(160deg,#0d2137 0%,#123a5c 55%,#15507a 100%);
+  color:#fff;padding:64px 0 60px}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.3px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+  padding:6px 14px;border-radius:999px;color:#e8f2f8;margin-bottom:22px}
+.pill i{width:7px;height:7px;border-radius:50%;background:#5fd39a;display:block;box-shadow:0 0 0 3px rgba(95,211,154,.25)}
+h1{font-size:38px;line-height:1.25;margin:0 0 16px;letter-spacing:-.5px;font-weight:700}
+.hero p.lede{font-size:17px;line-height:1.75;color:#c9dced;margin:0;max-width:640px}
+section{padding:56px 0 76px}
+.player{background:#0b1a2b;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid rgba(15,27,45,.15)}
+.player video{width:100%;display:block;background:#000;max-height:72vh}
+.meta{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center;margin-top:18px;color:var(--muted);font-size:14px}
+.callout{margin-top:28px;background:linear-gradient(135deg,rgba(47,125,149,.08),rgba(31,78,121,.06));
+  border:1px solid rgba(47,125,149,.22);border-radius:var(--radius);padding:20px 24px;font-size:15px;color:var(--ink2)}
+.callout b{color:var(--brand)}
+.chain{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.chain div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:13.5px;color:var(--ink2);box-shadow:var(--shadow)}
+.chain span{display:block;color:var(--muted);font-size:12.5px;margin-bottom:2px}
+footer{border-top:1px solid var(--line);padding:34px 0 46px;margin-top:20px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13.5px}
+@media(max-width:900px){.chain{grid-template-columns:repeat(2,1fr)}h1{font-size:30px}.topnav a:not(.cta){display:none}}
+</style>
+</head><body>
+
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="./index.html"><span class="logo">PM</span>智能体驱动的芯片项目管理助手</a>
+  <nav class="topnav">
+    <a href="./skills.html">技能清单</a>
+    <a href="./demo.html">技能演示</a>
+    <a href="./video.html" style="color:var(--brand);font-weight:600">演示录屏</a>
+    <a href="./report.html">项目报告书</a>
+    <a href="./journey.html">历程记录</a>
+    <a class="cta" href="./app/index.html">打开演示</a>
+  </nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="pill"><i></i>演示录屏</div>
+  <h1>一条风险，从消息到协同，全程录屏</h1>
+  <p class="lede">以 NV685 芯片项目的基板延期为例，完整演示技能链的八个环节：信号进入、事件落地、规则判定、案例检索、影响分析、风险卡生成、PM 判断、写回协同。</p>
+</div></header>
+
+<section><div class="wrap">
+  <div class="player">
+    <video controls preload="metadata" playsinline>
+      <source src="./video/demo.mp4" type="video/mp4">
+      您的浏览器不支持视频播放，<a href="./video/demo.mp4">点此下载原始视频</a>。
+    </video>
+  </div>
+  <div class="meta">
+    <span>屏幕录制 · 建议全屏观看</span>
+    <span>原始视频：<a href="./video/demo.mp4">video/demo.mp4</a></span>
+  </div>
+
+  <div class="chain">
+    <div><span>01–02</span>信号扫描 → 事件落地</div>
+    <div><span>03–05</span>规则判定 → 案例检索 → 影响分析</div>
+    <div><span>06</span>风险卡生成（待 PM 确认）</div>
+    <div><span>07–08</span>PM 判断 → 写回与协同</div>
+  </div>
+
+  <div class="callout">
+    <b>配套阅读：</b>文字版逐步拆解见 <a href="./demo.html">技能演示</a>；第 6 至第 8 步的操作界面在 <a href="./app/index.html">指挥舱演示</a> 中可直接上手。录屏中出现的技能与判断依据，均与这两处保持同一套数据。
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>智能体驱动的芯片项目管理助手 · 英伟达 Skill 黑客松参赛作品</span>
+  <span>2026 年 9 月</span>
+</div></footer>
+</body></html>
